@@ -1,4 +1,7 @@
 from django.db import models
+from django.utils import timezone
+import pytz
+import datetime
 
 
 class Passcard(models.Model):
@@ -25,3 +28,30 @@ class Visit(models.Model):
             entered=self.entered_at,
             leaved= "leaved at " + str(self.leaved_at) if self.leaved_at else "not leaved"
         )
+    
+    def get_duration(self) -> datetime.timedelta:
+        if self.leaved_at == None:
+            return timezone.now() - self.entered_at
+        return self.leaved_at - self.entered_at
+    
+    def is_visit_long(self, minutes: int = 60) -> bool:
+        duration_minutes = self.get_duration().total_seconds()/60
+        if duration_minutes > minutes:
+            return True
+        return False
+
+
+def format_duration(duration:datetime.timedelta) -> str:
+    seconds = duration.total_seconds()
+    hrs = int(seconds // 3600)
+    minutes = int(seconds % 3600 / 60)
+    formated = str(hrs) + " ч " + str(minutes) + " мин"
+    return formated
+
+def change_timezone_msc(date:datetime.datetime) -> datetime.datetime:
+
+    if date == None:
+        return None
+    local_tz = pytz.timezone("Europe/Moscow")
+    local_date = date.replace(tzinfo=pytz.utc).astimezone(local_tz)
+    return local_date
