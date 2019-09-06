@@ -36,22 +36,12 @@ class Visit(models.Model):
     
     def is_visit_long(self, minutes: int = 60) -> bool:
         duration_minutes = self.get_duration().total_seconds()/60
-        if duration_minutes > minutes:
-            return True
-        return False
+        return duration_minutes > minutes
 
 
 def format_duration(duration:datetime.timedelta) -> str:
     seconds = duration.total_seconds()
     hrs = int(seconds // 3600)
     minutes = int(seconds % 3600 / 60)
-    formated = str(hrs) + " ч " + str(minutes) + " мин"
-    return formated
+    return f"{hrs} ч {minutes} мин"
 
-def change_timezone_msc(date:datetime.datetime) -> datetime.datetime:
-
-    if date == None:
-        return None
-    local_tz = pytz.timezone("Europe/Moscow")
-    local_date = date.replace(tzinfo=pytz.utc).astimezone(local_tz)
-    return local_date
