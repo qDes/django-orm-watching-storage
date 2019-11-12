@@ -1,19 +1,15 @@
 import os
+import json
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': '185.12.5.249',
-        'PORT': '5434',
-        'NAME': 'checkpoint',
-        'USER': 'guard',
-        'PASSWORD': 'osim5',
-    }
-}
+from dotenv import load_dotenv
+
+load_dotenv()
+
+DATABASES = json.loads(os.getenv('DATABASES'))
 
 INSTALLED_APPS = ['datacenter']
 
-SECRET_KEY = 'REPLACE_ME'
+SECRET_KEY = 'REPLACE_ME' #os.getenv('SECRET_KEY')
 
 DEBUG = True
 
