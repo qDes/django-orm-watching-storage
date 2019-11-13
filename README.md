@@ -15,18 +15,8 @@ pip install -r requirements.txt
 В файле .env в папке project необходимо добавить переменные:
 DEBUG - режим отладки: True или False;
 SECRET_KEY - секретный ключ: строка;
-DATABASES - адреса баз данных в формате json, необходимые поля:
-```json
-{"default": 
-  {"ENGINE": "django.db.backends.postgresql_psycopg2", 
-  "HOST": "%host%", 
-  "PORT": "%port%", 
-  "NAME": "%name%", 
-  "USER": "%user%", 
-  "PASSWORD": 
-  "%password%"}
-  }
-```
+DATABASES - адрес базы данных: строка формата "postgres://USER:PASSWORD@HOST:PORT/NAME".
+
 
 
 # Запуск
