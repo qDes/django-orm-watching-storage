@@ -1,17 +1,17 @@
 import os
 import json
+from environs import Env
 
-from dotenv import load_dotenv
+env = Env()
+env.read_env()
 
-load_dotenv()
-
-DATABASES = json.loads(os.getenv('DATABASES'))
+DATABASES = json.loads(env.str('DATABASES'))
 
 INSTALLED_APPS = ['datacenter']
 
-SECRET_KEY = 'REPLACE_ME' #os.getenv('SECRET_KEY')
+SECRET_KEY = env.str("SECRET_KEY")
 
-DEBUG = True
+DEBUG = env.bool("DEBUG", default=False)
 
 ROOT_URLCONF = "project.urls"
 
