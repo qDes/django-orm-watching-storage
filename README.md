@@ -12,9 +12,9 @@ pip install -r requirements.txt
 
 Запросите доступ к БД у менеджера вашего банка. Для доступа вам понадобятся хост, порт, логин, пароль
 
-В файле .env в папке project необходимо добавить переменные:
-DEBUG - режим отладки: True или False;
-SECRET_KEY - секретный ключ: строка;
+В файле .env в папке project необходимо добавить переменные:<br>
+DEBUG - режим отладки: True или False;<br>
+SECRET_KEY - секретный ключ: строка;<br>
 DATABASES - адрес базы данных: строка формата "postgres://USER:PASSWORD@HOST:PORT/NAME".
 
 
