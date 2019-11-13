@@ -15,7 +15,7 @@ pip install -r requirements.txt
 В файле .env в папке project необходимо добавить переменные:<br>
 DEBUG - режим отладки: True или False;<br>
 SECRET_KEY - секретный ключ: строка;<br>
-DATABASES - адрес базы данных: строка формата "postgres://USER:PASSWORD@HOST:PORT/NAME".
+DB_URL - адрес базы данных: строка формата "postgres://USER:PASSWORD@HOST:PORT/NAME".
 
 
 
